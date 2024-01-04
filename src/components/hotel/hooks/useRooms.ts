@@ -11,6 +11,7 @@ function useRooms({ hotelId }: { hotelId: string }) {
   const client = useQueryClient()
 
   useEffect(() => {
+    // 구독취소
     const unsubscribe = onSnapshot(
       collection(doc(store, COLLECTIONS.HOTEL, hotelId), COLLECTIONS.ROOM),
       (snapshot) => {
