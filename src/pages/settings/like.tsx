@@ -31,7 +31,7 @@ function generateMocks() {
 }
 
 function LikePage() {
-  const { isEdit, reorder, save } = useEditLike()
+  const { data, isEdit, reorder, save } = useEditLike()
 
   const handleDragEndDrop = (result: DropResult) => {
     if (result.destination == null) {
@@ -44,6 +44,7 @@ function LikePage() {
     reorder(from, to)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const mocks = generateMocks()
 
   return (
@@ -88,7 +89,7 @@ function LikePage() {
                     </div>
                   )
                 }}
-                data={mocks}
+                data={data}
               />
             </ul>
           )}
