@@ -16,6 +16,12 @@ function Carousel({ images }: { images: string[] }) {
               css={imageStyles}
               height={300}
             />
+            {/* <img
+              src={imageUrl}
+              alt={`${idx + 1}번째 호텔의 이미지`}
+              css={imageStyles}
+              height={300}
+            /> */}
           </SwiperSlide>
         ))}
       </Swiper>
