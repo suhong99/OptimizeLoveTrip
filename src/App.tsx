@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PrivateRoute from '@components/auth/PrivateRoute'
-
+import { HelmetProvider } from 'react-helmet-async'
 import AuthGuard from '@components/auth/AuthGuard'
 import Navbar from '@shared/Navbar'
 
@@ -23,73 +23,75 @@ function App() {
 
   return (
     <Suspense fallback={<></>}>
-      <BrowserRouter>
-        <AuthGuard>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<HotelListPage />} />
-            <Route
-              path="/my"
-              element={
-                <PrivateRoute>
-                  <MyPage />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/signin" element={<SigninPage />} />
-            <Route path="/test" element={<TestPage />} />
-            <Route path="/hotel/:id" element={<HotelPage />} />
-            <Route
-              path="/settings"
-              element={
-                <PrivateRoute>
-                  <SettingsPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/settings/like"
-              element={
-                <PrivateRoute>
-                  <LikePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/schedule"
-              element={
-                <PrivateRoute>
-                  <SchedulePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/reservation"
-              element={
-                <PrivateRoute>
-                  <ReservationPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/reservation/done"
-              element={
-                <PrivateRoute>
-                  <ReservationDonePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/reservation/list"
-              element={
-                <PrivateRoute>
-                  <ReservationListPage />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </AuthGuard>
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <AuthGuard>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<HotelListPage />} />
+              <Route
+                path="/my"
+                element={
+                  <PrivateRoute>
+                    <MyPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/signin" element={<SigninPage />} />
+              <Route path="/test" element={<TestPage />} />
+              <Route path="/hotel/:id" element={<HotelPage />} />
+              <Route
+                path="/settings"
+                element={
+                  <PrivateRoute>
+                    <SettingsPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/settings/like"
+                element={
+                  <PrivateRoute>
+                    <LikePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/schedule"
+                element={
+                  <PrivateRoute>
+                    <SchedulePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/reservation"
+                element={
+                  <PrivateRoute>
+                    <ReservationPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/reservation/done"
+                element={
+                  <PrivateRoute>
+                    <ReservationDonePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/reservation/list"
+                element={
+                  <PrivateRoute>
+                    <ReservationListPage />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </AuthGuard>
+        </BrowserRouter>
+      </HelmetProvider>
     </Suspense>
   )
 }
