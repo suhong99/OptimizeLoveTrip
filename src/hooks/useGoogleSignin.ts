@@ -12,10 +12,8 @@ function useGoogleSignin() {
 
   const signin = useCallback(async () => {
     const provider = new GoogleAuthProvider()
-    console.log(provider, 'provider')
     try {
       const { user } = await signInWithPopup(auth, provider)
-      console.log(user, 'user')
 
       const userSnapshot = await getDoc(
         doc(collection(store, COLLECTIONS.USER), user.uid),
@@ -40,7 +38,6 @@ function useGoogleSignin() {
         navigate('/')
       }
     } catch (error) {
-      console.log('뭐지')
       console.log(error)
       if (error instanceof FirebaseError) {
         if (error.code === 'auth/popup-closed-by-user') {

@@ -20,6 +20,7 @@ function MyImage({
   const user = useUser()
   const setUser = useSetRecoilState(userAtom)
 
+  console.log(user)
   const handleUploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
 
@@ -44,6 +45,7 @@ function MyImage({
       photoURL: downloadUrl,
     })
 
+    console.log(downloadUrl)
     setUser({
       ...user,
       photoURL: downloadUrl,
