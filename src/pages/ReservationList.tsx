@@ -4,8 +4,6 @@ import useReservations from '@components/reservation-list/hooks/useReservations'
 function ReservationListPage() {
   const { data, isLoading } = useReservations()
 
-  console.log('data', data)
-
   if (data == null || isLoading === true) {
     return null
   }
